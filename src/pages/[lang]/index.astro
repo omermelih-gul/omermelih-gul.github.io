@@ -10,7 +10,7 @@ export async function getStaticPaths() {
 const { lang } = Astro.params;
 
 // Verileri çekme
-const home = await getEntry('pages', `${lang}/home`); // Ana sayfa metinleri için
+const home = await getEntry('pages', `${lang}/home`); 
 const bio = await getEntry('pages', `${lang}/bio`);
 const pubs = await getEntry('pages', `${lang}/publications`);
 const awards = await getEntry('pages', `${lang}/awards`);
@@ -65,7 +65,6 @@ const { Content: ContactContent } = await render(contact);
     </article>
 
     <article id="publications" class="content-section">
-      <h2>{lang === 'tr' ? 'Yayınlar' : 'Publications'}</h2>
       <div class="sub-nav">
         <button class="sub-tab-link active" data-target="journal-papers">
           {lang === 'tr' ? 'Dergi Makaleleri' : 'Journal Papers'}
@@ -92,26 +91,22 @@ const { Content: ContactContent } = await render(contact);
     </article>
 
     <article id="awards" class="content-section">
-      <h2>{lang === 'tr' ? 'Ödüller' : 'Awards'}</h2>
       <div class="markdown-body"><AwardsContent /></div>
     </article>
 
     <article id="projects" class="content-section">
-      <h2>{lang === 'tr' ? 'Projeler' : 'Projects'}</h2>
       <div class="markdown-body"><ProjectsContent /></div>
     </article>
 
     <article id="service" class="content-section">
-      <h2>{lang === 'tr' ? 'Akademik Hizmetler' : 'Service'}</h2>
       <div class="markdown-body"><ServiceContent /></div>
     </article>
 
     <article id="contact" class="content-section">
-      <h2>{lang === 'tr' ? 'İletişim' : 'Contact'}</h2>
       <div class="markdown-body">
         <ContactContent />
         <div class="contact-actions">
-          <a href="https://linkedin.com/in/..." target="_blank" class="linkedin-btn">LinkedIn</a>
+          <a href="https://linkedin.com/in/ömer-melih-gül-18026a30/" target="_blank" class="linkedin-btn">LinkedIn</a>
           <form class="contact-form" action="https://formspree.io/f/YOUR_ID" method="POST">
             <div class="form-group">
               <label>{lang === 'tr' ? 'Ad Soyad' : 'Full Name'}</label>

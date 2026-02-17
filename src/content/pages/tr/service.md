@@ -1,5 +1,5 @@
 ---
-title: "Akademik Hizmetler"
+title: "Akademik Faaliyetler"
 ---
 
 ### Hakemlik Faaliyetleri (Ad-hoc Reviewing)

@@ -21,7 +21,7 @@ const { lang, title } = Astro.props;
             <li><a href="#publications" class="tab-link" data-title={lang === 'tr' ? 'Yayınlar' : 'Publications'}>{lang === 'tr' ? 'Yayınlar' : 'Publications'}</a></li>
             <li><a href="#awards" class="tab-link" data-title={lang === 'tr' ? 'Ödüller' : 'Awards'}>{lang === 'tr' ? 'Ödüller' : 'Awards'}</a></li> 
             <li><a href="#projects" class="tab-link" data-title={lang === 'tr' ? 'Projeler' : 'Projects'}>{lang === 'tr' ? 'Projeler' : 'Projects'}</a></li>
-            <li><a href="#service" class="tab-link" data-title={lang === 'tr' ? 'Akademik Hizmetler' : 'Service'}>{lang === 'tr' ? 'Akademik Hizmetler' : 'Service'}</a></li>
+            <li><a href="#service" class="tab-link" data-title={lang === 'tr' ? 'Akademik Faaliyetler' : 'Academic Services'}>{lang === 'tr' ? 'Akademik Faaliyetler' : 'Academic Services'}</a></li>
             <li><a href="#contact" class="tab-link" data-title={lang === 'tr' ? 'İletişim' : 'Contact'}>{lang === 'tr' ? 'İletişim' : 'Contact'}</a></li>
           </ul>
         </div>
@@ -69,7 +69,7 @@ const { lang, title } = Astro.props;
           if (href === targetId) {
             link.classList.add('active-link');
             
-            // Eğer bir data-title varsa onu başlığa ekle, yoksa sadece ismi kullan
+            // Eğer bir data-title varsa onu başlığa ekle, yoksa Ω
             const pageTitle = link.getAttribute('data-title');
             if (pageTitle) {
               document.title = pageTitle;
@@ -110,7 +110,7 @@ const { lang, title } = Astro.props;
         });
       });
 
-      // --- Yayınlar Alt Sekme Mantığı ---
+      // --- Yayınlar Alt Sekme ---
       function setupSubTabs() {
         const subTabLinks = document.querySelectorAll('.sub-tab-link');
         subTabLinks.forEach(button => {

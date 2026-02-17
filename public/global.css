@@ -1,4 +1,3 @@
-/* --- Akademik Antrasit Tema --- */
 :root {
   --bg: #121212;
   --text: #e0e0e0;
@@ -67,7 +66,6 @@ body {
 }
 .nav-links a:hover { color: #ffffff !important; }
 
-/* Aktif Sekme Vurgusu */
 .nav-links a.active-link {
   color: #fff; 
   border-bottom: 2px solid #757575; 
@@ -101,11 +99,10 @@ body {
   transform: translateY(0);
 }
 
-/* --- HERO (HOME) ÖZEL DURUMU --- */
-/* justify-content ve align-items'ı sola yaslanacak şekilde güncelledik */
+/* --- HERO (HOME) --- */
 #home.active {
   display: flex !important;
-  flex-direction: row; /* Fotoğraf ve metin yan yana */
+  flex-direction: row;
   justify-content: flex-start; 
   align-items: center;
   min-height: calc(100vh - var(--nav-height));
@@ -124,21 +121,20 @@ body {
   margin: 0;
 }
 
-/* Pürüzsüz Dik Elips Profil Fotoğrafı */
 .profile-img {
   width: 220px; 
   height: 310px; 
   object-fit: cover;
-  border-radius: 50%; /* Kare olmayan kutuda %50 mükemmel elips sağlar */
+  border-radius: 50%;
   border: 3px solid #fff;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
   flex-shrink: 0; 
 }
 
-..hero-text {
+.hero-text {
   display: flex;
   flex-direction: column;
-  gap: 1rem; /* Öğeler arası mesafeyi biraz daraltarak daha kompakt yaptık */
+  gap: 1rem;
   text-align: left;
 }
 
@@ -152,19 +148,19 @@ body {
 
 .hero-intro {
   font-size: 1.25rem;
-  font-style: italic; /* Yazıyı italik yapar */
+  font-style: italic;
   max-width: 600px;
   line-height: 1.7;
-  margin: 0.5rem 0 1.5rem 0; /* h1'e yakınlaştırdık, sosyal linklerden uzaklaştırdık */
+  margin: 0.5rem 0 1.5rem 0;
 }
 
 @media (max-width: 768px) {
-  .hero-text h1 {
-    font-size: 2.5rem; /* Mobilde daha dengeli bir boyut */
-  }
+  .hero-text h1 { font-size: 2.5rem; }
+  #home.active { flex-direction: column; text-align: center; justify-content: center; }
+  .hero-content { flex-direction: column; gap: 2rem; }
 }
 
-/* Sosyal Linkler Sola Yaslı */
+/* --- SOSYAL LINKLER --- */
 .social-links { 
   display: flex; 
   justify-content: flex-start; 
@@ -185,7 +181,7 @@ body {
   color: #000;
 }
 
-/* --- ALT SEKMELER (YAYINLAR VB.) --- */
+/* --- ALT SEKMELER --- */
 .sub-nav {
   display: flex;
   gap: 2.5rem;
@@ -203,13 +199,10 @@ body {
   cursor: pointer;
   transition: 0.3s ease;
   position: relative;
-  font-family: inherit;
 }
 
 .sub-tab-link:hover { color: #ffffff; }
-
 .sub-tab-link.active { color: #757575; }
-
 .sub-tab-link.active::after {
   content: '';
   position: absolute;
@@ -233,7 +226,7 @@ body {
   transform: translateY(0);
 }
 
-/* Başlık Stilleri */
+/* --- BAŞLIKLAR --- */
 .content-section h2 { 
   font-family: 'Lora', serif; 
   color: white; 
@@ -244,34 +237,72 @@ body {
   margin-bottom: 3rem;
 }
 
-/* --- İLETIŞIM --- */
+/* --- İLETİŞİM (CONTACT) --- */
+
+#contact.content-section {
+    padding-top: 2rem;      
+    padding-bottom: 2rem;
+    margin-top: 0.5rem;
+}
+
+#contact h2 { 
+    margin-bottom: 1.2rem;  /* 3rem'den düşürüldü */
+    font-size: 2.2rem; 
+}
+
+/* Metin alanı */
+#contact .markdown-body {
+    font-size: 1.35rem; 
+    line-height: 1.6;       
+    font-style: italic;
+    margin-bottom: 2rem; 
+}
+
+#contact .markdown-body p {
+    margin-bottom: 0.8rem;
+    color: var(--text);
+}
+
+/* LinkedIn butonu ve Form konteynerı */
 .contact-actions {
-  margin-top: 2rem;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 2rem;
+    margin-top: 1rem;       
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.5rem;           
 }
 
 .linkedin-btn {
-  text-decoration: none;
-  background-color: #0077B5;
-  color: white;
-  padding: 0.8rem 2rem;
-  border: 2px solid #fff;
-  border-radius: 12px;
+  text-decoration: none; 
+  background-color: #0077B5; 
+  color: #fff !important; 
+  border: 2px solid #fff; 
+  padding: 0.5rem 2rem;  
+  border-radius: 12px;   
   font-weight: 700;
-  transition: transform 0.3s;
+  transition: 0.3s;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
+  margin-top: 1rem;  
 }
 
-.linkedin-btn:hover { color: #000; }
+.linkedin-btn:hover { background-color: #fff; color: #000000 !important; }
 
 .contact-form {
   width: 100%;
   max-width: 600px;
   display: flex;
   flex-direction: column;
-  gap: 1.2rem;
+  gap: 1rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    font-size: 1.1rem;
 }
 
 .form-group input, .form-group textarea {
@@ -281,17 +312,46 @@ body {
   padding: 0.8rem;
   color: #fff;
   width: 100%;
+  font-family: inherit;
+  font-size: 1rem;
+}
+
+.form-group textarea {
+    min-height: 200px; 
+    resize: vertical;  
 }
 
 .submit-btn {
-  background-color: var(--accent);
-  color: #000;
-  border: none;
-  padding: 1rem;
-  border-radius: 8px;
+  background-color: transparent; 
+  color: #fff !important; 
+  border: 2px solid #fff; 
+  padding: 0.5rem 2rem;  
+  border-radius: 12px;   
   font-weight: 700;
+  font-size: 1rem;
+  text-transform: none;  
   cursor: pointer;
+  transition: 0.3s;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 160px; 
+  align-self: flex-start;
 }
 
+.submit-btn:hover {
+  background-color: #ffffff !important;
+  color: #000000 !important; 
+  transform: translateY(-2px);
+}
 /* --- GENEL KONTEYNER --- */
-.container { max-width: 900px; margin: 0 auto; padding: 0 2rem; }
+.container { 
+    max-width: 900px; 
+    margin: 0 auto; 
+    padding: 0 2rem; 
+}
+
+@media (max-width: 768px) {
+    #contact .markdown-body { font-size: 1.15rem; }
+    .container { padding: 0 1rem; }
+}
