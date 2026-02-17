@@ -1,0 +1,148 @@
+---
+const { lang, title } = Astro.props;
+---
+<html lang={lang}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>{title}</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Lora:ital@0;1&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/global.css" />
+  </head>
+  <body>
+    <nav class="sticky-nav">
+      <div class="nav-container">
+        <div class="nav-content">
+          <a href="#home" class="logo tab-link">
+            {lang === 'tr' ? 'Doç. Dr. Ömer Melih Gül' : 'Assoc. Prof. Omer Melih Gul'}
+          </a>
+          <ul class="nav-links">
+            <li><a href="#bio" class="tab-link" data-title={lang === 'tr' ? 'Hakkımda' : 'Biography'}>{lang === 'tr' ? 'Hakkımda' : 'Biography'}</a></li>
+            <li><a href="#publications" class="tab-link" data-title={lang === 'tr' ? 'Yayınlar' : 'Publications'}>{lang === 'tr' ? 'Yayınlar' : 'Publications'}</a></li>
+            <li><a href="#awards" class="tab-link" data-title={lang === 'tr' ? 'Ödüller' : 'Awards'}>{lang === 'tr' ? 'Ödüller' : 'Awards'}</a></li> 
+            <li><a href="#projects" class="tab-link" data-title={lang === 'tr' ? 'Projeler' : 'Projects'}>{lang === 'tr' ? 'Projeler' : 'Projects'}</a></li>
+            <li><a href="#service" class="tab-link" data-title={lang === 'tr' ? 'Akademik Hizmetler' : 'Service'}>{lang === 'tr' ? 'Akademik Hizmetler' : 'Service'}</a></li>
+            <li><a href="#contact" class="tab-link" data-title={lang === 'tr' ? 'İletişim' : 'Contact'}>{lang === 'tr' ? 'İletişim' : 'Contact'}</a></li>
+          </ul>
+        </div>
+        
+        <div class="lang-wrapper">
+          <a href="#" id="lang-toggle" class="lang-toggle" data-lang={lang}>
+            {lang === 'tr' ? 'EN' : 'TR'}
+          </a>
+        </div>
+      </div>
+    </nav>
+
+    <slot />
+
+    <script is:inline>
+      function updateVisibility() {
+        const currentHash = window.location.hash;
+        const targetId = (currentHash && currentHash !== '#') ? currentHash : '#home';
+        
+        const sections = document.querySelectorAll('.content-section');
+        const navLinks = document.querySelectorAll('.nav-links a, .logo');
+        const baseTitle = document.querySelector('.logo').innerText;
+        const defaultName = "Ω";
+        let foundMatch = false;
+        
+        sections.forEach(section => {
+          section.style.display = 'none';
+          section.classList.remove('active');
+          
+          if (`#${section.id}` === targetId) {
+            section.style.display = (targetId === '#home') ? 'flex' : 'block';
+            
+            setTimeout(() => {
+              section.classList.add('active');
+            }, 20);
+            foundMatch = true;
+          }
+        });
+
+        // Aktif menü linkini vurgula ve TARAYICI BAŞLIĞINI GÜNCELLE
+        navLinks.forEach(link => {
+          link.classList.remove('active-link');
+          const href = link.getAttribute('href');
+          
+          if (href === targetId) {
+            link.classList.add('active-link');
+            
+            // Eğer bir data-title varsa onu başlığa ekle, yoksa sadece ismi kullan
+            const pageTitle = link.getAttribute('data-title');
+            if (pageTitle) {
+              document.title = pageTitle;
+            } else {
+              document.title = defaultName;
+            }
+          }
+        });
+
+        if (!foundMatch && targetId !== '#home') {
+          window.location.hash = '#home';
+        }
+        
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+
+      // --- Olay Dinleyicileri ---
+      window.addEventListener('hashchange', updateVisibility);
+      
+      // DOM yüklendiğinde başlat
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', () => {
+          updateVisibility();
+          setupSubTabs();
+        });
+      } else {
+        updateVisibility();
+        setupSubTabs();
+      }
+
+      // Ana Tab tıklamaları
+      document.querySelectorAll('.tab-link').forEach(link => {
+        link.addEventListener('click', (e) => {
+          const href = link.getAttribute('href');
+          if (href.startsWith('#')) {
+            window.location.hash = href;
+          }
+        });
+      });
+
+      // --- Yayınlar Alt Sekme Mantığı ---
+      function setupSubTabs() {
+        const subTabLinks = document.querySelectorAll('.sub-tab-link');
+        subTabLinks.forEach(button => {
+          button.addEventListener('click', () => {
+            const parent = button.closest('#publications');
+            if (!parent) return;
+            const targetContentId = button.getAttribute('data-target');
+
+            parent.querySelectorAll('.sub-tab-link').forEach(btn => btn.classList.remove('active'));
+            button.classList.add('active');
+
+            parent.querySelectorAll('.sub-content').forEach(content => {
+              content.classList.remove('active');
+              if (content.id === targetContentId) {
+                content.classList.add('active');
+              }
+            });
+          });
+        });
+      }
+
+      // Dil değiştirme
+      const langToggle = document.getElementById('lang-toggle');
+      if (langToggle) {
+        langToggle.addEventListener('click', (e) => {
+          e.preventDefault();
+          const currentLang = langToggle.getAttribute('data-lang');
+          const targetLang = currentLang === 'tr' ? 'en' : 'tr';
+          const newPath = window.location.pathname.replace(`/${currentLang}`, `/${targetLang}`);
+          window.location.href = newPath + window.location.hash;
+        });
+      }
+    </script>
+  </body>
+</html>

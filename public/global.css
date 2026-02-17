@@ -1,0 +1,297 @@
+/* --- Akademik Antrasit Tema --- */
+:root {
+  --bg: #121212;
+  --text: #e0e0e0;
+  --accent: #bb86fc;
+  --divider: #333;
+  --nav-height: 140px; 
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body { 
+  background-color: var(--bg); 
+  color: var(--text); 
+  font-family: 'Inter', sans-serif; 
+  line-height: 1.8;
+  min-height: 100vh;
+}
+
+/* --- NAVIGASYON --- */
+.sticky-nav {
+  position: sticky; 
+  top: 0; 
+  z-index: 1000;
+  background: rgba(18, 18, 18, 0.98);
+  border-bottom: 1px solid var(--divider);
+  padding: 1.5rem 0;
+  min-height: var(--nav-height);
+  display: flex;
+  align-items: center;
+}
+
+.nav-container {
+  max-width: 1400px; 
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  padding: 0 2rem;
+  width: 100%;
+}
+
+.nav-content {
+  grid-column: 2;
+  display: flex; 
+  flex-direction: column; 
+  align-items: center; 
+  gap: 1rem;
+}
+
+.logo { 
+  font-family: 'Lora', serif; 
+  font-size: 2.2rem; 
+  color: #fff; 
+  text-decoration: none; 
+  font-weight: 600;
+}
+
+.nav-links { list-style: none; display: flex; gap: 2rem; }
+.nav-links a { 
+  text-decoration: none; 
+  color: #b0b0b0; 
+  font-size: 1.35rem;
+  font-weight: 600;
+  transition: 0.2s;
+}
+.nav-links a:hover { color: #ffffff !important; }
+
+/* Aktif Sekme Vurgusu */
+.nav-links a.active-link {
+  color: #fff; 
+  border-bottom: 2px solid #757575; 
+  padding-bottom: 4px;
+}
+
+.lang-wrapper { grid-column: 3; justify-self: end; }
+.lang-toggle {
+  text-decoration: none; 
+  color: #fff; 
+  border: 1px solid #fff;
+  padding: 0.5rem 1rem; 
+  border-radius: 6px; 
+  font-weight: 600;
+}
+
+/* --- CONTENT SECTIONS --- */
+.content-section {
+  display: none; 
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  padding-top: 4rem; 
+  padding-bottom: 6rem;
+  margin-top: 2rem;
+}
+
+.content-section.active {
+  display: block;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* --- HERO (HOME) ÖZEL DURUMU --- */
+/* justify-content ve align-items'ı sola yaslanacak şekilde güncelledik */
+#home.active {
+  display: flex !important;
+  flex-direction: row; /* Fotoğraf ve metin yan yana */
+  justify-content: flex-start; 
+  align-items: center;
+  min-height: calc(100vh - var(--nav-height));
+  padding-top: 0;
+  margin-top: 0;
+  text-align: left;
+}
+
+.hero-content {
+  display: flex;
+  align-items: center; 
+  justify-content: flex-start; 
+  gap: 4rem; 
+  width: 100%;
+  max-width: 1200px;
+  margin: 0;
+}
+
+/* Pürüzsüz Dik Elips Profil Fotoğrafı */
+.profile-img {
+  width: 220px; 
+  height: 310px; 
+  object-fit: cover;
+  border-radius: 50%; /* Kare olmayan kutuda %50 mükemmel elips sağlar */
+  border: 3px solid #fff;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  flex-shrink: 0; 
+}
+
+..hero-text {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem; /* Öğeler arası mesafeyi biraz daraltarak daha kompakt yaptık */
+  text-align: left;
+}
+
+.hero-text h1 {
+  margin: 0;
+  font-family: 'Lora', serif;
+  font-size: 3.5rem;
+  line-height: 1.2;
+  color: #fff;
+}
+
+.hero-intro {
+  font-size: 1.25rem;
+  font-style: italic; /* Yazıyı italik yapar */
+  max-width: 600px;
+  line-height: 1.7;
+  margin: 0.5rem 0 1.5rem 0; /* h1'e yakınlaştırdık, sosyal linklerden uzaklaştırdık */
+}
+
+@media (max-width: 768px) {
+  .hero-text h1 {
+    font-size: 2.5rem; /* Mobilde daha dengeli bir boyut */
+  }
+}
+
+/* Sosyal Linkler Sola Yaslı */
+.social-links { 
+  display: flex; 
+  justify-content: flex-start; 
+  gap: 1.5rem; 
+  margin-top: 1rem; 
+}
+.social-links a {
+  text-decoration: none; 
+  color: #fff; 
+  border: 2px solid #fff;
+  padding: 0.8rem 2rem; 
+  border-radius: 12px; 
+  font-weight: 700;
+  transition: 0.3s;
+}
+.social-links a:hover {
+  background-color: #fff;
+  color: #000;
+}
+
+/* --- ALT SEKMELER (YAYINLAR VB.) --- */
+.sub-nav {
+  display: flex;
+  gap: 2.5rem;
+  margin-bottom: 3rem;
+  border-bottom: 1px solid var(--divider);
+}
+
+.sub-tab-link {
+  background: none;
+  border: none;
+  color: #b0b0b0;
+  font-size: 1.1rem;
+  font-weight: 600;
+  padding-bottom: 1rem;
+  cursor: pointer;
+  transition: 0.3s ease;
+  position: relative;
+  font-family: inherit;
+}
+
+.sub-tab-link:hover { color: #ffffff; }
+
+.sub-tab-link.active { color: #757575; }
+
+.sub-tab-link.active::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: #757575;
+}
+
+.sub-content {
+  display: none;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.sub-content.active {
+  display: block;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Başlık Stilleri */
+.content-section h2 { 
+  font-family: 'Lora', serif; 
+  color: white; 
+  border-bottom: 2px solid var(--accent);
+  display: inline-block; 
+  padding-bottom: 8px; 
+  font-size: 2.5rem; 
+  margin-bottom: 3rem;
+}
+
+/* --- İLETIŞIM --- */
+.contact-actions {
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2rem;
+}
+
+.linkedin-btn {
+  text-decoration: none;
+  background-color: #0077B5;
+  color: white;
+  padding: 0.8rem 2rem;
+  border: 2px solid #fff;
+  border-radius: 12px;
+  font-weight: 700;
+  transition: transform 0.3s;
+}
+
+.linkedin-btn:hover { color: #000; }
+
+.contact-form {
+  width: 100%;
+  max-width: 600px;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.form-group input, .form-group textarea {
+  background-color: #1e1e1e;
+  border: 1px solid #333;
+  border-radius: 8px;
+  padding: 0.8rem;
+  color: #fff;
+  width: 100%;
+}
+
+.submit-btn {
+  background-color: var(--accent);
+  color: #000;
+  border: none;
+  padding: 1rem;
+  border-radius: 8px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+/* --- GENEL KONTEYNER --- */
+.container { max-width: 900px; margin: 0 auto; padding: 0 2rem; }

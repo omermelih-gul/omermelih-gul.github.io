@@ -1,0 +1,12 @@
+# Bağımlılıklar 
+node_modules/
+dist/
+
+# Loglar ve Geçici Dosyalar
+npm-debug.log*
+yarn-debug.log*
+.DS_Store
+.vscode/
+
+# Astro'ya Özel
+.astro/

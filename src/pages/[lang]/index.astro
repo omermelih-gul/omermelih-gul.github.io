@@ -1,0 +1,137 @@
+---
+import { getEntry, render } from 'astro:content';
+import { marked } from 'marked'; 
+import Layout from '../../layouts/Layout.astro';
+
+export async function getStaticPaths() {
+  return [{ params: { lang: 'tr' } }, { params: { lang: 'en' } }];
+}
+
+const { lang } = Astro.params;
+
+// Verileri çekme
+const home = await getEntry('pages', `${lang}/home`); // Ana sayfa metinleri için
+const bio = await getEntry('pages', `${lang}/bio`);
+const pubs = await getEntry('pages', `${lang}/publications`);
+const awards = await getEntry('pages', `${lang}/awards`);
+const projects = await getEntry('pages', `${lang}/projects`);
+const service = await getEntry('pages', `${lang}/service`);
+const contact = await getEntry('pages', `${lang}/contact`);
+
+// Yayınları bölme ve HTML'e dönüştürme mantığı
+const pubsParts = pubs.body.split('---split---');
+const journalHTML = marked.parse(pubsParts[0] || '');
+const conferenceHTML = marked.parse(pubsParts[1] || '');
+const chapterHTML = marked.parse(pubsParts[2] || '');
+
+// Render işlemleri
+const { Content: BioContent } = await render(bio);
+const { Content: AwardsContent } = await render(awards);
+const { Content: ProjectsContent } = await render(projects);
+const { Content: ServiceContent } = await render(service);
+const { Content: ContactContent } = await render(contact);
+---
+
+<Layout lang={lang} title={home.data.title}>
+  <main class="container">
+
+    <section id="home" class="content-section">
+      <header class="hero">
+        <div class="hero-content">
+          <img src="/images/profile.jpg" alt={home.data.title} class="profile-img" />
+
+          <div class="hero-text">
+            
+            
+            <p class="hero-intro">{home.data.intro}</p>
+
+            <div class="social-links">
+              <a href="https://scholar.google.com/citations?user=23xDpDAAAAAJ&hl=en" target="_blank" rel="noopener noreferrer">
+                <span class="icon">🎓</span> Google Scholar
+              </a>
+              <a href="https://orcid.org/0000-0002-0673-7877" target="_blank" rel="noopener noreferrer">
+                <span class="icon">🆔</span> ORCID
+              </a>
+            </div>
+          </div>
+        </div>
+      </header>
+    </section>
+
+    <article id="bio" class="content-section">
+      <div class="markdown-body">
+        <BioContent />
+      </div>
+    </article>
+
+    <article id="publications" class="content-section">
+      <h2>{lang === 'tr' ? 'Yayınlar' : 'Publications'}</h2>
+      <div class="sub-nav">
+        <button class="sub-tab-link active" data-target="journal-papers">
+          {lang === 'tr' ? 'Dergi Makaleleri' : 'Journal Papers'}
+        </button>
+        <button class="sub-tab-link" data-target="conference-proceedings">
+          {lang === 'tr' ? 'Konferans Bildirileri' : 'Conference Proceedings'}
+        </button>
+        <button class="sub-tab-link" data-target="book-chapters">
+          {lang === 'tr' ? 'Kitap Bölümleri' : 'Book Chapters'}
+        </button>
+      </div>
+
+      <div class="publications-container">
+        <div id="journal-papers" class="sub-content active">
+          <div class="markdown-body" set:html={journalHTML}></div>
+        </div>
+        <div id="conference-proceedings" class="sub-content">
+          <div class="markdown-body" set:html={conferenceHTML}></div>
+        </div>
+        <div id="book-chapters" class="sub-content">
+          <div class="markdown-body" set:html={chapterHTML}></div>
+        </div>
+      </div>
+    </article>
+
+    <article id="awards" class="content-section">
+      <h2>{lang === 'tr' ? 'Ödüller' : 'Awards'}</h2>
+      <div class="markdown-body"><AwardsContent /></div>
+    </article>
+
+    <article id="projects" class="content-section">
+      <h2>{lang === 'tr' ? 'Projeler' : 'Projects'}</h2>
+      <div class="markdown-body"><ProjectsContent /></div>
+    </article>
+
+    <article id="service" class="content-section">
+      <h2>{lang === 'tr' ? 'Akademik Hizmetler' : 'Service'}</h2>
+      <div class="markdown-body"><ServiceContent /></div>
+    </article>
+
+    <article id="contact" class="content-section">
+      <h2>{lang === 'tr' ? 'İletişim' : 'Contact'}</h2>
+      <div class="markdown-body">
+        <ContactContent />
+        <div class="contact-actions">
+          <a href="https://linkedin.com/in/..." target="_blank" class="linkedin-btn">LinkedIn</a>
+          <form class="contact-form" action="https://formspree.io/f/YOUR_ID" method="POST">
+            <div class="form-group">
+              <label>{lang === 'tr' ? 'Ad Soyad' : 'Full Name'}</label>
+              <input type="text" name="name" required />
+            </div>
+            <div class="form-group">
+              <label>{lang === 'tr' ? 'E-posta' : 'E-mail'}</label>
+              <input type="email" name="email" required placeholder={lang === 'tr' ? 'eposta@adresiniz.com' : 'your@email.com'} />
+            </div>
+            <div class="form-group">
+              <label>{lang === 'tr' ? 'Mesaj' : 'Message'}</label>
+              <textarea name="message" rows="5" required placeholder={lang === 'tr' ? 'Buraya yazın...' : 'Type here...'}></textarea>
+            </div>
+            <button type="submit" class="submit-btn">
+              {lang === 'tr' ? 'Gönder' : 'Send'}
+            </button>
+          </form>
+        </div>
+      </div>
+    </article>
+
+  </main>
+</Layout>
