@@ -360,9 +360,9 @@ body {
     }
 
     .nav-container {
-        grid-template-columns: 1fr; /* Izgarayı tek sütuna düşür */
-        gap: 1rem;
-        padding: 0 1rem;
+        grid-template-columns: 1fr;
+        padding-top: 2.5rem; /* İsmin dil butonuyla çakışmaması için */
+        position: relative;  /* Absolute konumlandırma için referans noktası */
     }
 
     .nav-content {
@@ -370,23 +370,28 @@ body {
     }
 
     .logo {
-        font-size: 1.8rem;
+        font-size: 1.6rem;   /* İsmin boyutunu mobilde küçült*/
+        text-align: center;
+        display: block;
+        width: 100%;
     }
 
     .nav-links {
-        gap: 1rem;
-        flex-wrap: wrap; /* Linkler sığmazsa alt satıra geç */
         justify-content: center;
+        margin-top: 0.5rem;
     }
 
     .nav-links a {
         font-size: 1.1rem;
     }
 
+    /* Dil butonunu (TR/EN) serbest bırakıp en sağ üste sabitleyelim */
     .lang-wrapper {
-        grid-column: 1;
-        justify-self: center;
-        margin-top: 0.5rem;
+        position: absolute; 
+        top: 1rem;          /* Sayfanın en tepesinden boşluk */
+        right: 1rem;        /* Sayfanın en sağından boşluk */
+        margin: 0;
+        z-index: 1001;
     }
 
     /* 2. Hero (Ana Sayfa) Düzenlemesi */
