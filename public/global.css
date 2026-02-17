@@ -355,15 +355,14 @@ body {
 @media (max-width: 768px) {
     /* 1. Navigasyon Düzenlemesi */
     .sticky-nav {
-        padding: 0.5rem 0;
+        padding: 1rem 0;
         min-height: auto;
     }
 
     .nav-container {
-    	display: block !important;
-    	position: relative;  
-        padding: 0 1rem !important;   
-        padding-top: 3rem !important;
+        grid-template-columns: 1fr;
+        padding-top: 2.5rem; /* İsmin dil butonuyla çakışmaması için */
+        position: relative;  /* Absolute konumlandırma için referans noktası */
     }
 
     .nav-content {
@@ -371,40 +370,30 @@ body {
     }
 
     .logo {
-        font-size: 1.5rem;         
+        font-size: 1.6rem;   /* İsmin boyutunu mobilde küçült*/
         text-align: center;
         display: block;
         width: 100%;
-        line-height: 1.3;
     }
 
     .nav-links {
-        margin-top: 1rem;
         justify-content: center;
-        gap: 0.8rem;
-        flex-wrap: wrap;        /* Linkler sığmazsa alt satıra  geç*/
+        margin-top: 0.5rem;
     }
 
     .nav-links a {
-        font-size: 1rem;
+        font-size: 1.1rem;
     }
 
     /* Dil butonunu (TR/EN) serbest bırakıp en sağ üste sabitleyelim */
     .lang-wrapper {
-        position: absolute !important; /* Bağımsız konumlandırma */
-        top: 0.8rem !important;        /* En tepeden boşluk */
-        right: 1rem !important;        /* En sağdan boşluk */
-        margin: 0 !important;
-        z-index: 1005;                 /* Diğer her şeyin üstünde durmasını sağlar */
+        position: absolute; 
+        top: 1rem;          /* Sayfanın en tepesinden boşluk */
+        right: 1rem;        /* Sayfanın en sağından boşluk */
+        margin: 0;
+        z-index: 1001;
     }
 
-    .lang-toggle {
-        padding: 0.4rem 0.8rem;
-        font-size: 0.9rem;
-        background-color: var(--bg);   /* Tıklanabilirlik için arka plan netliği */
-    }
-    
-    
     /* 2. Hero (Ana Sayfa) Düzenlemesi */
     #home.active {
         flex-direction: column; /* Fotoğraf ve metni alt alta al */
@@ -415,12 +404,13 @@ body {
 
     .hero-content {
         flex-direction: column;
-        gap: 1.5rem;
+        gap: 2rem;
+        align-items: center;
     }
 
     .profile-img {
-        width: 160px; 
-        height: 220px;
+        width: 180px; /* Mobilde daha dengeli bir boyut */
+        height: 250px;
     }
 
     .hero-text {
@@ -457,7 +447,7 @@ body {
 
     .linkedin-btn, .submit-btn {
         width: 100%; /* Mobilde butonlar tam genişlikte  */
-        max-width: 250px; /* Çok yayılmaması için sınır */
+        max-width: 300px; /* Çok yayılmaması için sınır */
     }
 
     /* 4. Genel Konteyner */
@@ -476,8 +466,6 @@ body {
     .sub-nav {
         border-bottom: 1px solid var(--divider); /* Çizgiyi mobilde de koru ama dikey yap */
         margin-bottom: 2rem;
-        flex-direction: column;
-        gap: 0.5rem;
     }
     .sub-tab-link.active::after {
         width: 4px; /* Mobilde alt çizgi yerine yan çizgi */
@@ -487,8 +475,8 @@ body {
     }
 
     .sub-tab-link {
-        text-align: left;
-        padding: 0.8rem 1rem;
+        width: 100%;
+        padding-bottom: 0.5rem;
         border-bottom: 1px solid var(--divider);
     }
 }
