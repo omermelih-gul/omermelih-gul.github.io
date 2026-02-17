@@ -351,7 +351,127 @@ body {
     padding: 0 2rem; 
 }
 
+/* --- RESPONSIVE (MOBIL UYUMLULUK) --- */
 @media (max-width: 768px) {
-    #contact .markdown-body { font-size: 1.15rem; }
-    .container { padding: 0 1rem; }
+    /* 1. Navigasyon Düzenlemesi */
+    .sticky-nav {
+        padding: 1rem 0;
+        min-height: auto;
+    }
+
+    .nav-container {
+        grid-template-columns: 1fr; /* Izgarayı tek sütuna düşür */
+        gap: 1rem;
+        padding: 0 1rem;
+    }
+
+    .nav-content {
+        grid-column: 1;
+    }
+
+    .logo {
+        font-size: 1.8rem;
+    }
+
+    .nav-links {
+        gap: 1rem;
+        flex-wrap: wrap; /* Linkler sığmazsa alt satıra geç */
+        justify-content: center;
+    }
+
+    .nav-links a {
+        font-size: 1.1rem;
+    }
+
+    .lang-wrapper {
+        grid-column: 1;
+        justify-self: center;
+        margin-top: 0.5rem;
+    }
+
+    /* 2. Hero (Ana Sayfa) Düzenlemesi */
+    #home.active {
+        flex-direction: column; /* Fotoğraf ve metni alt alta al */
+        text-align: center;
+        padding-top: 2rem;
+        min-height: auto;
+    }
+
+    .hero-content {
+        flex-direction: column;
+        gap: 2rem;
+        align-items: center;
+    }
+
+    .profile-img {
+        width: 180px; /* Mobilde daha dengeli bir boyut */
+        height: 250px;
+    }
+
+    .hero-text {
+        text-align: center;
+        align-items: center;
+    }
+
+    .hero-text h1 {
+        font-size: 2.2rem;
+    }
+
+    .social-links {
+        justify-content: center;
+    }
+
+    /* 3. İletişim Bölümü Düzenlemesi */
+    #contact.content-section {
+        padding-top: 1rem;
+    }
+
+    #contact .markdown-body {
+        font-size: 1.15rem;
+        text-align: center; /* Mobilde italik metni merkezle */
+    }
+
+    .contact-actions {
+        align-items: center; /* Butonları mobilde merkezle */
+        width: 100%;
+    }
+
+    .contact-form {
+        max-width: 100%;
+    }
+
+    .linkedin-btn, .submit-btn {
+        width: 100%; /* Mobilde butonlar tam genişlikte  */
+        max-width: 300px; /* Çok yayılmaması için sınır */
+    }
+
+    /* 4. Genel Konteyner */
+    .container {
+        padding: 0 1.2rem;
+    }
+
+    .content-section h2 {
+        font-size: 1.8rem;
+        margin-bottom: 2rem;
+        display: block;
+        text-align: center;
+    }
+
+    /* Yayınlar Sekmeleri (Sub-nav) */
+    .sub-nav {
+        border-bottom: 1px solid var(--divider); /* Çizgiyi mobilde de koru ama dikey yap */
+        margin-bottom: 2rem;
+    }
+    .sub-tab-link.active::after {
+        width: 4px; /* Mobilde alt çizgi yerine yan çizgi */
+        height: 100%;
+        left: 0;
+        bottom: 0;
+    }
+
+    .sub-tab-link {
+        width: 100%;
+        padding-bottom: 0.5rem;
+        border-bottom: 1px solid var(--divider);
+    }
 }
