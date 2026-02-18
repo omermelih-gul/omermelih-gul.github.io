@@ -2,5 +2,5 @@
 title: "Ödüller"
 ---
 
-* **2024** — **En iyi paper**, IEEE.
-* **2023** — **En iyi paper2**, ACM.
+* **2024** — **Lorem ipsum dolor sit amet**, Lorem ipsum dolor sit amet.
+* **2023** — **Lorem ipsum dolor sit amet**, Lorem ipsum dolor sit amet.

@@ -1,4 +1,4 @@
 ---
 title: "Home"
-intro: "Bilgisayar ağları, makine öğrenmesi ve blokzincir teknolojilerinin kesişiminde akademik araştırmalar yürüten bir bilim insanı."
+intro: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
 ---

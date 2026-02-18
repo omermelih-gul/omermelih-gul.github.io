@@ -353,130 +353,126 @@ body {
 
 /* --- RESPONSIVE (MOBIL UYUMLULUK) --- */
 @media (max-width: 768px) {
-    /* 1. Navigasyon Düzenlemesi */
+    /* 1. Navigasyon Düzenlemesi - Kompakt ve Ortalanmış */
     .sticky-nav {
-        padding: 1rem 0;
+        padding: 0.3rem 0; /* Header yüksekliği daraltıldı */
         min-height: auto;
     }
 
     .nav-container {
-        grid-template-columns: 1fr;
-        padding-top: 2.5rem; /* İsmin dil butonuyla çakışmaması için */
-        position: relative;  /* Absolute konumlandırma için referans noktası */
+        display: block !important; /* Grid iptal, blok yapıya geçildi */
+        position: relative;  
+        padding: 0 1rem !important;   
+        padding-top: 2.2rem !important; /* İsmi dil butonunun altına iter */
     }
 
     .nav-content {
         grid-column: 1;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center; /* İçerikleri yatayda merkezler */
     }
 
     .logo {
-        font-size: 1.6rem;   /* İsmin boyutunu mobilde küçült*/
+        font-size: 1.4rem; /* İsmi hafif küçült*/
         text-align: center;
         display: block;
         width: 100%;
+        line-height: 1.2;
+        margin: 0 auto;
     }
 
     .nav-links {
+        margin-top: 0.6rem; /* Menü ile isim arası mesafe */
         justify-content: center;
-        margin-top: 0.5rem;
+        gap: 0.5rem; /* Linkler arası boşluk */
+        flex-wrap: wrap; 
     }
 
     .nav-links a {
-        font-size: 1.1rem;
+        font-size: 0.95rem;
     }
 
-    /* Dil butonunu (TR/EN) serbest bırakıp en sağ üste sabitleyelim */
+    /* Dil butonu (TR/EN) - En Yukarıda ve Sabit */
     .lang-wrapper {
-        position: absolute; 
-        top: 1rem;          /* Sayfanın en tepesinden boşluk */
-        right: 1rem;        /* Sayfanın en sağından boşluk */
-        margin: 0;
-        z-index: 1001;
+        position: absolute !important; 
+        top: 0.4rem !important; 
+        right: 0.8rem !important;  
+        margin: 0 !important;
+        z-index: 1005;
     }
 
+    .lang-toggle {
+        padding: 0.2rem 0.6rem;
+        font-size: 0.8rem;
+        background-color: var(--bg);
+    }
+    
     /* 2. Hero (Ana Sayfa) Düzenlemesi */
     #home.active {
-        flex-direction: column; /* Fotoğraf ve metni alt alta al */
+        flex-direction: column; 
         text-align: center;
-        padding-top: 2rem;
+        padding-top: 1rem; 
         min-height: auto;
     }
 
     .hero-content {
         flex-direction: column;
-        gap: 2rem;
-        align-items: center;
+        gap: 1.2rem;
     }
 
     .profile-img {
-        width: 180px; /* Mobilde daha dengeli bir boyut */
-        height: 250px;
-    }
-
-    .hero-text {
-        text-align: center;
-        align-items: center;
+        width: 145px; 
+        height: 200px;
     }
 
     .hero-text h1 {
-        font-size: 2.2rem;
-    }
-
-    .social-links {
-        justify-content: center;
+        font-size: 1.8rem;
     }
 
     /* 3. İletişim Bölümü Düzenlemesi */
     #contact.content-section {
-        padding-top: 1rem;
-    }
-
-    #contact .markdown-body {
-        font-size: 1.15rem;
-        text-align: center; /* Mobilde italik metni merkezle */
-    }
-
-    .contact-actions {
-        align-items: center; /* Butonları mobilde merkezle */
-        width: 100%;
-    }
-
-    .contact-form {
-        max-width: 100%;
+        padding-top: 0.5rem;
     }
 
     .linkedin-btn, .submit-btn {
-        width: 100%; /* Mobilde butonlar tam genişlikte  */
-        max-width: 300px; /* Çok yayılmaması için sınır */
+        width: 100%; 
+        max-width: 200px; 
+        margin: 0 auto;
     }
 
-    /* 4. Genel Konteyner */
+    /* 4. Genel Konteyner ve Başlıklar */
     .container {
-        padding: 0 1.2rem;
+        padding: 0 1rem;
     }
 
     .content-section h2 {
-        font-size: 1.8rem;
-        margin-bottom: 2rem;
+        font-size: 1.6rem;
+        margin-bottom: 1.5rem;
         display: block;
         text-align: center;
     }
 
     /* Yayınlar Sekmeleri (Sub-nav) */
     .sub-nav {
-        border-bottom: 1px solid var(--divider); /* Çizgiyi mobilde de koru ama dikey yap */
-        margin-bottom: 2rem;
-    }
-    .sub-tab-link.active::after {
-        width: 4px; /* Mobilde alt çizgi yerine yan çizgi */
-        height: 100%;
-        left: 0;
-        bottom: 0;
+        border-bottom: 1px solid var(--divider);
+        margin-bottom: 1.5rem;
+        flex-direction: column;
+        gap: 0.4rem;
     }
 
     .sub-tab-link {
-        width: 100%;
-        padding-bottom: 0.5rem;
+        text-align: left;
+        padding: 0.6rem 1rem;
         border-bottom: 1px solid var(--divider);
+        font-size: 1rem;
+    }
+
+    .sub-tab-link.active::after {
+        width: 4px;
+        height: 100%;
+        left: 0;
+        bottom: 0;
     }
 }
