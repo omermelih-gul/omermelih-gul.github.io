@@ -4,9 +4,17 @@ const { lang, title } = Astro.props;
 <html lang={lang}>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{title}</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Lora:ital@0;1&display=swap" rel="stylesheet">
+    <meta name="description" content={lang === 'tr' ? 'Doç. Dr. Ömer Melih Gül - Akademik Portfolyo' : 'Assoc. Prof. Omer Melih Gul - Academic Portfolio'} />
+    <meta property="og:title" content={lang === 'tr' ? 'Doç. Dr. Ömer Melih Gül' : 'Assoc. Prof. Omer Melih Gul'} />
+    <meta property="og:description" content={lang === 'tr' ? 'Akademik Portfolyo ve Yayınlar' : 'Academic Portfolio and Publications'} />
+    <meta property="og:image" content="https://omermelih-gul.github.io/images/profile.jpg" />
+    <meta property="og:type" content="website" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/global.css" />
   </head>
   <body>
@@ -44,7 +52,7 @@ const { lang, title } = Astro.props;
         const sections = document.querySelectorAll('.content-section');
         const navLinks = document.querySelectorAll('.nav-links a, .logo');
         const baseTitle = document.querySelector('.logo').innerText;
-        const defaultName = "Ω";
+        const defaultName = document.querySelector('.logo').innerText;
         let foundMatch = false;
         
         sections.forEach(section => {

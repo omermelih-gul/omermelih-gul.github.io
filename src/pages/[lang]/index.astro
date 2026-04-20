@@ -46,11 +46,14 @@ const { Content: ContactContent } = await render(contact);
             <p class="hero-intro">{home.data.intro}</p>
 
             <div class="social-links">
+              <a href="https://akademi.itu.edu.tr/omgul/" target="_blank" rel="noopener noreferrer">
+                <img src="/images/itu-akademi.png" alt="İTÜ Akademi" class="btn-logo" />
+              </a>
               <a href="https://scholar.google.com/citations?user=23xDpDAAAAAJ&hl=en" target="_blank" rel="noopener noreferrer">
-                <span class="icon">🎓</span> Google Scholar
+                🎓 Google Scholar
               </a>
               <a href="https://orcid.org/0000-0002-0673-7877" target="_blank" rel="noopener noreferrer">
-                <span class="icon">🆔</span> ORCID
+                🆔 ORCID
               </a>
             </div>
           </div>
@@ -59,12 +62,14 @@ const { Content: ContactContent } = await render(contact);
     </section>
 
     <article id="bio" class="content-section">
+      <h2>{bio.data.title}</h2>
       <div class="markdown-body">
         <BioContent />
       </div>
     </article>
 
     <article id="publications" class="content-section">
+      <h2>{pubs.data.title}</h2>
       <div class="sub-nav">
         <button class="sub-tab-link active" data-target="journal-papers">
           {lang === 'tr' ? 'Dergi Makaleleri' : 'Journal Papers'}
@@ -91,23 +96,31 @@ const { Content: ContactContent } = await render(contact);
     </article>
 
     <article id="awards" class="content-section">
+      <h2>{awards.data.title}</h2>
       <div class="markdown-body"><AwardsContent /></div>
     </article>
 
     <article id="projects" class="content-section">
+      <h2>{projects.data.title}</h2>
       <div class="markdown-body"><ProjectsContent /></div>
     </article>
 
     <article id="service" class="content-section">
+      <h2>{service.data.title}</h2>
       <div class="markdown-body"><ServiceContent /></div>
     </article>
 
     <article id="contact" class="content-section">
+      <h2>{contact.data.title}</h2>
       <div class="markdown-body">
         <ContactContent />
         <div class="contact-actions">
           <a href="https://linkedin.com/in/ömer-melih-gül-18026a30/" target="_blank" class="linkedin-btn">LinkedIn</a>
-          <form class="contact-form" action="https://formspree.io/f/YOUR_ID" method="POST">
+          <form class="contact-form" action="https://formsubmit.co/omgul@itu.edu.tr" method="POST">
+            <input type="hidden" name="_subject" value={lang === 'tr' ? 'Yeni İletişim Formu Mesajı' : 'New Contact Form Message'} />
+            <input type="hidden" name="_captcha" value="true" />
+            <input type="text" name="_honey" style="display:none" />
+            <input type="hidden" name="_next" value={`https://omermelih-gul.github.io/${lang}/#contact`} />
             <div class="form-group">
               <label>{lang === 'tr' ? 'Ad Soyad' : 'Full Name'}</label>
               <input type="text" name="name" required />

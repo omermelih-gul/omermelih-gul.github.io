@@ -1,6 +1,6 @@
 import { defineConfig } from 'astro/config';
 
 export default defineConfig({
-  site: 'https://zmgul.github.io',
+  site: 'https://omermelih-gul.github.io',
   base: '/',
 });
