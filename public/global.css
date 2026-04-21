@@ -543,9 +543,22 @@ body {
         padding-top: 0.5rem;
     }
 
+    #contact h2 {
+        font-size: 1.6rem;
+    }
+
+    #contact .markdown-body {
+        font-size: 1.05rem;
+        line-height: 1.6;
+    }
+
+    .form-group label {
+        font-size: 0.95rem;
+    }
+
     .linkedin-btn, .submit-btn {
-        width: 100%; 
-        max-width: 200px; 
+        width: 100%;
+        max-width: 200px;
         margin: 0 auto;
     }
 
