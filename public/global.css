@@ -580,6 +580,12 @@ body {
         text-align: center;
     }
 
+    .markdown-body h3 {
+        font-size: 1.1rem;
+        margin-top: 1.25rem;
+        margin-bottom: 0.75rem;
+    }
+
     /* Yayınlar Sekmeleri (Sub-nav) */
     .sub-nav {
         border-bottom: 1px solid var(--divider);
@@ -628,5 +634,9 @@ body {
 
     .content-section h2 {
         font-size: 1.4rem;
+    }
+
+    .markdown-body h3 {
+        font-size: 1.05rem;
     }
 }
