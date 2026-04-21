@@ -9,8 +9,7 @@ export async function getStaticPaths() {
 
 const { lang } = Astro.params;
 
-// Verileri çekme
-const home = await getEntry('pages', `${lang}/home`); 
+const home = await getEntry('pages', `${lang}/home`);
 const bio = await getEntry('pages', `${lang}/bio`);
 const pubs = await getEntry('pages', `${lang}/publications`);
 const awards = await getEntry('pages', `${lang}/awards`);
@@ -18,13 +17,11 @@ const projects = await getEntry('pages', `${lang}/projects`);
 const service = await getEntry('pages', `${lang}/service`);
 const contact = await getEntry('pages', `${lang}/contact`);
 
-// Yayınları bölme ve HTML'e dönüştürme mantığı
 const pubsParts = pubs.body.split('---split---');
 const journalHTML = marked.parse(pubsParts[0] || '');
 const conferenceHTML = marked.parse(pubsParts[1] || '');
 const chapterHTML = marked.parse(pubsParts[2] || '');
 
-// Render işlemleri
 const { Content: BioContent } = await render(bio);
 const { Content: AwardsContent } = await render(awards);
 const { Content: ProjectsContent } = await render(projects);

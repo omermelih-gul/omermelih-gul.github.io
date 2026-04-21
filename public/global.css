@@ -327,12 +327,11 @@ body {
     margin-top: 0.5rem;
 }
 
-#contact h2 { 
-    margin-bottom: 1.2rem;  /* 3rem'den düşürüldü */
-    font-size: 2.2rem; 
+#contact h2 {
+    margin-bottom: 1.2rem;
+    font-size: 2.2rem;
 }
 
-/* Metin alanı */
 #contact .markdown-body {
     font-size: 1.35rem; 
     line-height: 1.6;       
@@ -345,7 +344,6 @@ body {
     color: var(--text);
 }
 
-/* LinkedIn butonu ve Form konteynerı */
 .contact-actions {
     margin-top: 1rem;       
     display: flex;
@@ -446,17 +444,16 @@ body {
 
 /* --- RESPONSIVE (MOBIL UYUMLULUK) --- */
 @media (max-width: 768px) {
-    /* 1. Navigasyon Düzenlemesi - Kompakt ve Ortalanmış */
     .sticky-nav {
-        padding: 0.3rem 0; /* Header yüksekliği daraltıldı */
+        padding: 0.3rem 0;
         min-height: auto;
     }
 
     .nav-container {
-        display: block !important; /* Grid iptal, blok yapıya geçildi */
-        position: relative;  
-        padding: 0 1rem !important;   
-        padding-top: 2.2rem !important; /* İsmi dil butonunun altına iter */
+        display: block !important;
+        position: relative;
+        padding: 0 1rem !important;
+        padding-top: 2.2rem !important;
     }
 
     .nav-content {
@@ -464,11 +461,11 @@ body {
         width: 100%;
         display: flex;
         flex-direction: column;
-        align-items: center; /* İçerikleri yatayda merkezler */
+        align-items: center;
     }
 
     .logo {
-        font-size: 1.4rem; /* İsmi hafif küçült*/
+        font-size: 1.4rem;
         text-align: center;
         display: block;
         width: 100%;
@@ -477,21 +474,20 @@ body {
     }
 
     .nav-links {
-        margin-top: 0.6rem; /* Menü ile isim arası mesafe */
+        margin-top: 0.6rem;
         justify-content: center;
-        gap: 0.5rem; /* Linkler arası boşluk */
-        flex-wrap: wrap; 
+        gap: 0.5rem;
+        flex-wrap: wrap;
     }
 
     .nav-links a {
         font-size: 0.95rem;
     }
 
-    /* Dil butonu (TR/EN) - En Yukarıda ve Sabit */
     .lang-wrapper {
-        position: absolute !important; 
-        top: 0.4rem !important; 
-        right: 0.8rem !important;  
+        position: absolute !important;
+        top: 0.4rem !important;
+        right: 0.8rem !important;
         margin: 0 !important;
         z-index: 1005;
     }
@@ -501,8 +497,7 @@ body {
         font-size: 0.75rem;
         background-color: var(--bg);
     }
-    
-    /* 2. Hero (Ana Sayfa) Düzenlemesi */
+
     #home.active {
         flex-direction: column; 
         text-align: center;
@@ -539,7 +534,6 @@ body {
         font-size: 0.9rem;
     }
 
-    /* 3. İletişim Bölümü Düzenlemesi */
     #contact.content-section {
         padding-top: 0.5rem;
     }
@@ -563,7 +557,6 @@ body {
         margin: 0 auto;
     }
 
-    /* 4. Genel Konteyner ve Başlıklar */
     .container {
         padding: 0 1rem;
     }
@@ -587,7 +580,6 @@ body {
         margin-bottom: 0.75rem;
     }
 
-    /* Yayınlar Sekmeleri (Sub-nav) */
     .sub-nav {
         border-bottom: 1px solid var(--divider);
         margin-bottom: 1.5rem;
